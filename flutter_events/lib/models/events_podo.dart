@@ -4,6 +4,9 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:flutter_events/models/firebase_services.dart';
+
 List<Events> eventsFromJson(String str) => new List<Events>.from(json.decode(str).map((x) => Events.fromJson(x)));
 
 String eventsToJson(List<Events> data) => json.encode(new List<dynamic>.from(data.map((x) => x.toJson())));
@@ -45,6 +48,10 @@ class Events {
         htmlMessage: json["html_message"],
         description: json["description"],
     );
+
+    Events.fromSnapshot(DocumentSnapshot snapshot):
+      eventName = snapshot["event_name"],
+      city      = snapshot["city"];
 
     Map<String, dynamic> toJson() => {
         "event_name": eventName,

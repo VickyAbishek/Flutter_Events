@@ -48,23 +48,13 @@ class _GlobalScreenState extends State<GlobalEventsScreen> {
 
 class EventCard extends StatelessWidget {
   final Events event;
+  
   EventCard({this.event});
   @override
   Widget build(BuildContext context) {
+    // print(event.eventName);
     return Container(
+      
       child: Text(event.eventName));
-      Row(
-    children: <Widget>[
-        Expanded(
-            child: Divider()
-        ),       
-
-        Text("OR"),        
-
-        Expanded(
-            child: Divider()
-        ),
-    ]
-)
   }
 }
